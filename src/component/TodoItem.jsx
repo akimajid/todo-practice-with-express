@@ -1,24 +1,23 @@
-import { useState } from "react";
 import { Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
 import moment from "moment";
 
-const TodoItem = (props) => {
+const TodoItem = ({ action, deleteItem, toggleStatus, isDone }) => {
 
   return (
     <Card className="my-2">
       <CardBody>
         <div className="d-flex justify-content-between">
           <div>
-            <CardTitle tag="h5" className="fw-bold">
-              {moment(props.date).format("DD MMMM YYYY")}
-            </CardTitle>
-            <CardText>{props.action}</CardText>
+            {/* <CardTitle tag="h5" className="fw-bold">
+              {moment(date).format("DD MMMM YYYY")}
+            </CardTitle> */}
+            <CardText>{action}</CardText>
           </div>
           <div className="d-flex align-items-center">
-            {props.isDone ? (
+            {isDone ? (
               <Button
                 className="mx-2"
-                onClick={props.toggleStatus}
+                onClick={toggleStatus}
                 color="success"
               >
                 Done
@@ -26,13 +25,13 @@ const TodoItem = (props) => {
             ) : (
               <Button
                 className="mx-2"
-                onClick={props.toggleStatus}
+                onClick={toggleStatus}
                 color="warning"
               >
                 On Going
               </Button>
             )}
-            <Button onClick={props.deleteItem} className="mx-2" color="danger">
+            <Button onClick={deleteItem} className="mx-2" color="danger">
               Delete
             </Button>
           </div>
